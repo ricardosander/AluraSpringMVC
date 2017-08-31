@@ -24,9 +24,9 @@ public class JPAConfiguration {
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("root");
+        dataSource.setUsername("root");
         dataSource.setPassword("123");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/casadocodigo");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 
         factoryBean.setDataSource(dataSource);
