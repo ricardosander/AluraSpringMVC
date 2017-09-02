@@ -1,7 +1,9 @@
 package br.com.casadocodigo.loja.model;
 
+import javax.persistence.Embeddable;
 import java.math.BigDecimal;
 
+@Embeddable
 public class Preco {
 
     private BigDecimal valor;
