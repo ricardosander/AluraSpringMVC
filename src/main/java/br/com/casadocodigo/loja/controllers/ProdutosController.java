@@ -6,15 +6,17 @@ import br.com.casadocodigo.loja.model.TipoPreco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping(value = "/produtos")
 public class ProdutosController {
 
     @Autowired
     private ProdutoDAO produtoDAO;
 
-    @RequestMapping("/produtos/form")
+    @RequestMapping(method = RequestMethod.GET, value = "/form")
     public ModelAndView form() {
 
         ModelAndView modelAndView = new ModelAndView("produtos/form");
@@ -24,7 +26,7 @@ public class ProdutosController {
         return modelAndView;
     }
 
-    @RequestMapping("/produtos")
+    @RequestMapping(method = RequestMethod.POST)
     public String gravar(Produto produto) {
 
         this.produtoDAO.gravar(produto);
