@@ -9,6 +9,7 @@
         Casa do código</title>
 </head>
 <body>
+<div>${ sucesso }</div>
 <table>
     <tr>
         <td>Título</td>
