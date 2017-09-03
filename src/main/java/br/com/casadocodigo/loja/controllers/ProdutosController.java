@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/produtos")
 public class ProdutosController {
@@ -32,6 +34,17 @@ public class ProdutosController {
         this.produtoDAO.gravar(produto);
 
         return "produtos/ok";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView listar() {
+
+        ModelAndView modelAndView = new ModelAndView("produtos/lista");
+
+        List<Produto> produtos = produtoDAO.listar();
+        modelAndView.addObject("produtos", produtos);
+
+        return modelAndView;
     }
 
 }
