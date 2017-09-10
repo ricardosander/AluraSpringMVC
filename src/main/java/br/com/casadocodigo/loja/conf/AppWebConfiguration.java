@@ -6,6 +6,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.format.datetime.DateFormatterRegistrar;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -35,6 +39,18 @@ public class AppWebConfiguration {
         reloadableResourceBundleMessageSource.setCacheSeconds(1);
 
         return reloadableResourceBundleMessageSource;
+    }
+
+    @Bean
+    public FormattingConversionService mvcConversionService() {
+
+        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
+
+        DateFormatterRegistrar registra = new DateFormatterRegistrar();
+        registra.setFormatter(new DateFormatter("dd/MM/yyyy"));
+        registra.registerFormatters(conversionService);
+
+        return conversionService;
     }
 
 }
