@@ -30,7 +30,7 @@
     <div>
         <label>Lançamento</label>
         <form:input path="dataLancamento"/>
-        <input type="text" name="dataLancamento"/>
+        <form:errors path="dataLancamento"/>
     </div>
     <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
         <div>
