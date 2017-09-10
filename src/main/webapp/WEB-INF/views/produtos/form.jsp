@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -10,7 +11,7 @@
     <title>Livros de java, Android, Iphone, PHP, Ruby e muito mais - Casa do código</title>
 </head>
 <body>
-<form:form action="/produtos" method="post" commandName="produto">
+<form:form action="${s:mvcUrl('ProdutosController#gravar').build()}" method="post" commandName="produto">
     <div>
         <label>Título</label>
         <form:errors path="titulo"/>
